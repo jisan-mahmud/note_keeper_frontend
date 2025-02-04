@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-h1{
+h1, h1 > a, b{
     font-family: "Permanent Marker", serif;
     font-weight: 400;
     font-style: normal;
 }
-p, a, span, li {
+* {
     font-family: "Exo 2", serif;
     font-optical-sizing: auto;
     font-style: normal;

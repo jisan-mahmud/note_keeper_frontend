@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import TagsSidebar from '../component/TagsSidebar';
+import Notes from '../component/Notes';
 
 const Home = () => {
-    const [page, setPage] = useState(0)
-
-    const handleChange = (_, value) => {
-        // setPage(value)
-        console.log(value)
-      };
-
     return (
-        <div>
-            <h1>Home</h1>
+        <div className='flex'>
+            <TagsSidebar/>
+            <Notes/>
         </div>
     );
 };
