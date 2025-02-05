@@ -1,11 +1,12 @@
 import React from 'react';
 
-const NameField = () => {
+const NameField = ({firstNameRef, lastNameRef}) => {
     return (
         <div className="flex flex-wrap sm:flex-nowrap gap-5">
             {/* First Name Field */}
             <div className="relative w-full sm:w-1/2">
                 <input 
+                    ref={firstNameRef}
                     placeholder="First Name" 
                     className="border p-2 rounded-md w-full"
                 />
@@ -17,6 +18,7 @@ const NameField = () => {
             {/* Last Name Field */}
             <div className="relative w-full sm:w-1/2">
                 <input 
+                    ref={lastNameRef}
                     placeholder="Last Name" 
                     className="border p-2 rounded-md w-full"
                 />

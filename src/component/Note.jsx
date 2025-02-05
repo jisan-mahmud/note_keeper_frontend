@@ -1,7 +1,10 @@
+import { BsFillPinAngleFill } from "react-icons/bs";
+
 const Note = () => {
     return (
         <div className='bg-amber-100 rounded-lg p-4'>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-3 mb-2">
+                <BsFillPinAngleFill className="text-3xl text-yellow-900" />
                 <h2 className="leading-none font-bold text-xl text-gray-900">onsectetur adipisicing elit.</h2>
             </div>
             <hr className="my-3 text-gray-300"/>

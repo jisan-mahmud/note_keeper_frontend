@@ -1,9 +1,10 @@
 import React from 'react';
 
-const PasswordField = ({fieldType}) => {
+const PasswordField = ({fieldType, passwordRef}) => {
     return (
         <div className="relative my-5">
             <input
+                ref={passwordRef}
                 type='password' 
                 placeholder= {fieldType}
                 className="border placeholder:text-gray-500 p-2 rounded-md w-full"

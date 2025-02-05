@@ -1,9 +1,10 @@
 import React from 'react';
 
-const EmailField = () => {
+const EmailField = ({emailRef}) => {
     return (
         <div className="relative my-5">
             <input
+                ref={emailRef}
                 type='email' 
                 placeholder="Email" 
                 className="border placeholder:text-gray-500 p-2 rounded-md w-full"
