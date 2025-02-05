@@ -10,3 +10,34 @@ h1, h2, h1 > a, b{
     font-optical-sizing: auto;
     font-style: normal;
 }
+
+
+
+/* WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 4px; /* Adjust width */
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Light gray background */
+    border-radius: 10px;
+}
+
+/* Handle (scrolling part) */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Darker gray handle */
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Even darker on hover */
+}
+
+/* Firefox */
+body {
+    scrollbar-width: thin; /* Can be 'auto', 'thin', or 'none' */
+    scrollbar-color: #888 #f0f0f0; /* thumb color | track color */
+    -ms-overflow-style: none; /* For Internet Explorer 11 */
+}
