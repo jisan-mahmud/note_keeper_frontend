@@ -1,6 +1,7 @@
 import React from 'react';
 
 const PasswordField = ({fieldType, passwordRef}) => {
+    
     return (
         <div className="relative my-5">
             <input
