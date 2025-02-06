@@ -3,12 +3,12 @@ import React from 'react';
 const PasswordField = ({fieldType, passwordRef}) => {
     
     return (
-        <div className="relative my-5">
+        <div className="relative w-full my-5">
             <input
                 ref={passwordRef}
                 type='password' 
                 placeholder= {fieldType}
-                className="border placeholder:text-gray-500 p-2 rounded-md w-full"
+                className="border p-2 rounded-md w-full"
             />
             <span className="absolute -top-2 left-2 bg-amber-200 text-red-900 text-sm px-1">
                 Required *
