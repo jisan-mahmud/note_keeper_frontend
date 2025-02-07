@@ -10,7 +10,7 @@ const NameField = ({firstNameRef, lastNameRef}) => {
                     placeholder="First Name" 
                     className="border p-2 rounded-md w-full"
                 />
-                <span className="absolute -top-2 left-3 bg-amber-200 text-red-900 text-xs px-1">
+                <span className="absolute -top-2 left-3 bg-amber-100 text-red-900 text-xs px-1">
                     Required *
                 </span>
             </div>
@@ -22,7 +22,7 @@ const NameField = ({firstNameRef, lastNameRef}) => {
                     placeholder="Last Name" 
                     className="border p-2 rounded-md w-full"
                 />
-                <span className="absolute -top-2 left-3 bg-amber-200 text-red-900 text-xs px-1">
+                <span className="absolute -top-2 left-3 bg-amber-100 text-red-900 text-xs px-1">
                     Required *
                 </span>
             </div>

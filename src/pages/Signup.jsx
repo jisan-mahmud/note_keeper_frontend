@@ -49,7 +49,7 @@ const Signup = () => {
     return (
     <div className="flex justify-center items-center min-h-[calc(100vh-100px)] p-4">
       <div className="flex flex-col sm:flex-row justify-center items-center w-full max-w-md">
-        <div className="bg-amber-200 p-8 sm:p-10 rounded-3xl w-full max-w-lg shadow-lg">
+        <div className="bg-amber-100 p-8 sm:p-10 rounded-3xl w-full max-w-lg shadow-lg">
           <h2 className="text-2xl text-center font-semibold">Sign Up</h2>
             <form onSubmit={handleForm} onChange={handleFormInput} className="mt-6 sm:mt-8 space-y-4">
               <NameField firstNameRef={firstName} lastNameRef={lastName} />

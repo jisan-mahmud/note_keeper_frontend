@@ -9,7 +9,7 @@ const EmailField = ({emailRef}) => {
                 placeholder="Email" 
                 className="border p-2 rounded-md w-full"
             />
-            <span className="absolute -top-2 left-2 bg-amber-200 text-red-900 text-sm px-1">
+            <span className="absolute -top-2 left-2 bg-amber-100 text-red-900 text-sm px-1">
                 Required *
             </span>
         </div>

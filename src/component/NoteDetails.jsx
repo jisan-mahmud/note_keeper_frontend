@@ -26,11 +26,12 @@ const NoteDetails = ({title, note, setIsOpen }) => {
           className="text-2xl w-full focus:outline-0" 
           value={inputValue} // bind input value to state
           onChange={handleInputChange} 
+          style={{ fontFamily: '"Permanent Marker", serif' }}
         />
         <hr/>
         <textarea 
           cols="30" 
-          rows="10"
+          rows="8"
           className="w-full resize-none focus:outline-0 text-gray-700 text-lg my-4 p-2"
         >
           {note}
