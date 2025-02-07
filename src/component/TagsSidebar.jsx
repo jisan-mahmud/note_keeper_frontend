@@ -1,21 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SearchSection from './SearchSection';
 import Filter from './Filter';
 import Tags from './Tags';
 import AddNotes from './AddNotes';
-import { menuContext } from '../context/MenuContext';
 
 const TagsSidebar = () => {
-    
     return (
-        <div>
+        <div className="flex flex-col justify-between min-h-[100dvh] overflow-y-auto p-4">
             <div>
-                <SearchSection/>
-                <Filter/>
-                <Tags/>
+                <SearchSection />
+                <Filter />
+                <Tags />
             </div>
             <div>
-                <AddNotes/>
+                <AddNotes />
             </div>
         </div>
     );
