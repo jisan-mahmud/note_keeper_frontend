@@ -1,5 +1,6 @@
 import { BsFillPinAngleFill } from "react-icons/bs";
 
+
 const Note = () => {
     return (
         <div className='bg-amber-100 rounded-lg p-4'>

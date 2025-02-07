@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { TiThMenu } from "react-icons/ti";
+import { menuContext } from '../context/MenuContext';
 
 const Navbar = () => {
+
+    const menuState = useContext(menuContext)
+    
+    const handleMenu = () => {
+        menuState.setIsOpen(!menuState.isOpen)
+    }
+
     return (
         <div className='flex px-20 py-3 bg-[#FF9A8B] justify-between'>
-            <div>
-                <h1><Link to='/' className='text-2xl'>Note Memo</Link></h1>
+            <div className='flex gap-4 items-center text-2xl'>
+                <TiThMenu onClick={handleMenu} className='cursor-pointer' />
+                <h1><Link to='/'>Note Memo</Link></h1>
             </div>
             <div className='flex gap-4 text-lg'>
                 <NavLink to='/sign-up' className={'hover:text-blue-900'}>Singup</NavLink>
