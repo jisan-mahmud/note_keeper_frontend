@@ -1,20 +1,42 @@
 import { BsFillPinAngleFill } from "react-icons/bs";
+import NoteDetails from "./NoteDetails";
+import { useState } from "react";
 
 
 const Note = () => {
+
+    const [isOpen, SetIsOpen] = useState(false)
+
+    console.log(isOpen)
+    const title = 'onsectetur adipisicing elit.'
+    const note = `
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+    Debitis ducimus quo cum quisquam error? 
+    Culpa porro, modi, alias soluta amet eveniet incidunt accusantium dolores facilis ea consectetur mollitia molestiae obcaecati.
+    klasnfkdghadfku slk oief oie wj oapojaeo ajpeoh ods ihoasfh.
+    `
+    const truncateText = (text, limit = 50) => {
+        return text.length > limit ? text.slice(0, limit).trim() + "..." : text;
+    };
+
     return (
-        <div className='bg-amber-100 rounded-lg p-4'>
+       <>
+        <div onClick={ () => SetIsOpen(true)} className='bg-amber-100 rounded-lg p-4 !h-fit'>
             <div className="flex items-center gap-3 mb-2">
                 <BsFillPinAngleFill className="text-3xl text-yellow-900" />
-                <h2 className="leading-none font-bold text-xl text-gray-900">onsectetur adipisicing elit.</h2>
+                <h2 className="leading-none cursor-pointer font-bold text-xl text-gray-900">{title}</h2>
             </div>
             <hr className="my-3 text-gray-300"/>
             <div className="flex">
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis ducimus quo cum quisquam error? Culpa porro, modi, alias soluta amet eveniet incidunt accusantium dolores facilis ea consectetur mollitia molestiae obcaecati.
+                    {truncateText(note, 200)}
                 </p>
             </div>
         </div>
+        {isOpen && (
+            <NoteDetails title={title} note={note} setIsOpen={SetIsOpen}></NoteDetails>
+        )}
+       </>
     );
 };
 
