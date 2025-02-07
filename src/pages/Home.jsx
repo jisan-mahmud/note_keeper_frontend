@@ -8,12 +8,14 @@ const Home = () => {
     const { isOpen, setIsOpen } = useContext(menuContext);
     const [screenSize, setScreenSize] = useState(window.innerWidth);
 
-    const handleResize = () => {
-        setScreenSize(window.innerWidth);
-        console.log('called')
-    };
-
-    window.addEventListener("resize", handleResize);
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize(window.innerWidth);
+            console.log('called')
+        };
+    
+        window.addEventListener("resize", handleResize);
+    }, [])
 
 
     useEffect(() => {
