@@ -28,8 +28,17 @@ const Home = () => {
         };
     }, [isOpen, setIsOpen]);
 
+    useEffect(() => {
+        const handleResize = () => {
+          document.body.style.height = `${window.innerHeight}px`; // Prevent layout shifts
+        };
+      
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
+
     return (
-        <div className="flex relative">
+        <div className="flex overflow-hidden">
             <motion.div
                 initial={{ x: 0, opacity: 1 }}
                 animate={{ x: isOpen ? 0 : -200, opacity: isOpen ? 1 : 0 }}
