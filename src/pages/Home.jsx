@@ -30,7 +30,7 @@ const Home = () => {
                 initial={{ x: 0, opacity: 1 }}
                 animate={{ x: isOpen ? 0 : -200, opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className= {`sm:flex flex-col justify-between bg-[#FAD0C4] min-h-[calc(100vh-100px)] ${isOpen ? 'pl-10 md:relative pr-10 w-9/12 md:w-2/9' : 'w-0 pl-0 pr-0 none'}`}
+                className= {`sm:flex px-6 lg:px-10 flex-col justify-between bg-[#FAD0C4] min-h-[calc(100vh-100px)] ${isOpen ? 'md:relative w-9/12 md:w-2/9' : 'w-0 pl-0 pr-0 none'}`}
             >
                 <TagsSidebar />
             </motion.div>
