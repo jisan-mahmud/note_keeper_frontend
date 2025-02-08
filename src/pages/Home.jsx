@@ -5,30 +5,8 @@ import Notes from "../component/Notes";
 import { menuContext } from "../context/MenuContext";
 
 const Home = () => {
-    const { isOpen, setIsOpen } = useContext(menuContext);
+    const { isOpen } = useContext(menuContext);
     
-    useEffect(() => {
-        let prevHeight = window.innerHeight; // Store initial height
-
-        const handleResize = () => {
-            const newWidth = window.innerWidth;
-            const isMobileSize = newWidth <= 768;
-            const heightChange = Math.abs(window.innerHeight - prevHeight); // Detect height changes
-
-            if (heightChange < 100) { // Ignore minor changes (keyboard opening)
-                if (isMobileSize && isOpen) {
-                    setIsOpen(false); // Collapse only when switching to mobile
-                } else if (!isMobileSize && !isOpen) {
-                    setIsOpen(true); // Expand only when switching to desktop
-                }
-            }
-
-            prevHeight = window.innerHeight; // Update for next check
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, [isOpen, setIsOpen]);
 
     return (
         <div className="flex overflow-hidden">
