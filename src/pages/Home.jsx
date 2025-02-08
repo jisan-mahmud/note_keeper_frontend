@@ -32,7 +32,7 @@ const Home = () => {
 
 
             {/* Notes Content */}
-            <div className={`flex-1 -z-20 transition-all duration-300 ${isOpen ? "ml-[9/12] md:ml-2/9" : "ml-0"}`}>
+            <div className={`flex-1 mt-10 transition-all duration-300 ${isOpen ? "ml-[9/12] md:ml-2/9" : "ml-0"}`}>
                 <Notes />
             </div>
         </div>
