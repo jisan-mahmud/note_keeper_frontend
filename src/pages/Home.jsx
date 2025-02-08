@@ -14,7 +14,7 @@ const Home = () => {
                 initial={{ x: 0, opacity: 1 }}
                 animate={{ x: isOpen ? 0 : -200, opacity: isOpen ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className={`fixed md:relative left-0 top-0 -z-10 bg-[#FAD0C4] min-h-screen h-full
+                className={`fixed md:relative top-3 left-0 md:top-0 -z-10 bg-[#FAD0C4] min-h-screen h-full
                     ${isOpen ? "w-9/12 md:w-2/9" : "w-0"}`}
             >
                 <TagsSidebar />
