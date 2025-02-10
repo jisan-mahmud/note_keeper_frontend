@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Layout from './pages/Layout'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import NewNode from './pages/NewNode'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

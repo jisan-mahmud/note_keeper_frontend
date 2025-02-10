@@ -3,13 +3,15 @@ import { useContext, useEffect, useState } from "react";
 import TagsSidebar from "../component/TagsSidebar";
 import Notes from "../component/Notes";
 import { menuContext } from "../context/MenuContext";
+import NewNode from "./NewNode";
+import { useLocation, useParams } from "react-router-dom";
 
 const Home = () => {
     const { isOpen, setIsOpen } = useContext(menuContext);
-
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
     
+    let page = useLocation()
+    page = page.search.split('=')[1]
 
     useEffect(() => {
         if(screenWidth <= 768){
@@ -27,7 +29,7 @@ const Home = () => {
             className={`fixed md:relative top-4 left-0 md:top-0 px-4 z-10 bg-[#FAD0C4] min-h-screen h-full
                 ${isOpen ? "w-9/12 md:w-2/9" : "w-0"}`}
             >
-                <TagsSidebar />
+                <TagsSidebar/>
             </motion.div>
 
 
@@ -35,6 +37,15 @@ const Home = () => {
             <div className={`flex-1 mt-10 md:mt-4 transition-all duration-300 ${isOpen ? "ml-[9/12] md:ml-2/9" : "ml-0"}`}>
                 <Notes />
             </div>
+
+
+            {/* new note */}
+            {page == "add-newnote" && (
+                <div className="z-21 bg-[#000000c1] fixed w-full h-full flex items-center justify-center">
+                    <NewNode/>
+                </div>
+            )}
+
         </div>
     );
 };

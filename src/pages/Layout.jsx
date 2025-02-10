@@ -9,7 +9,7 @@ const Layout = () => {
         <div>
             <MenuContextProvider>
                 <Navbar/>
-                <div style={{ minHeight: 'calc(100vh - 100px)' }}>
+                <div className='pt-10' style={{ minHeight: 'calc(100vh - 100px)' }}>
                     <Outlet />
                 </div>
                 <Footer/>

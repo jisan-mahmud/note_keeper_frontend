@@ -47,7 +47,7 @@ const Signup = () => {
     }
 
     return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-100px)] p-4">
+    <div className="flex justify-center items-center min-h-[calc(100vh-84px)] p-10">
       <div className="flex flex-col sm:flex-row justify-center items-center w-full max-w-md">
         <div className="bg-amber-100 p-8 sm:p-10 rounded-3xl w-full max-w-lg shadow-lg">
           <h2 className="text-2xl text-center font-semibold">Sign Up</h2>

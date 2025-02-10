@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='flex fixed z-30 md:relative w-full px-6 sm:px-20 py-3 bg-[#FF9A8B] justify-between items-center'>
+        <div className='flex fixed z-30 w-full px-6 sm:px-20 py-3 bg-[#FF9A8B] justify-between items-center'>
             <div className='flex gap-4 items-center text-lg sm:text-2xl'>
                 {path == '/' && (<TiThMenu onClick={handleMenu} className='cursor-pointer' />)}
                 <h1><Link to='/'>Note Memo</Link></h1>
