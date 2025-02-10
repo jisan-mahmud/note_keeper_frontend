@@ -41,9 +41,7 @@ const Home = () => {
 
             {/* new note */}
             {page == "add-newnote" && (
-                <div className="z-21 bg-[#000000c1] fixed w-full h-full flex items-center justify-center">
-                    <NewNode/>
-                </div>
+                <NewNode/>
             )}
 
         </div>
