@@ -15,9 +15,9 @@ const NewNode = () => {
         >
           <div 
             className="relative bg-amber-100 p-6 rounded-lg w-full max-w-lg mx-4 sm:mx-8 lg:max-w-2xl"
-            onClick={() => navigate(-1)}
           >
             <button
+              onClick={() => navigate(-1)}
               className="absolute cursor-pointer top-4 right-4 text-black hover:text-gray-700 focus:outline-none"
             >
               <ImCross />

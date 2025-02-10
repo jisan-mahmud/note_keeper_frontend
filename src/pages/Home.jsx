@@ -5,13 +5,16 @@ import Notes from "../component/Notes";
 import { menuContext } from "../context/MenuContext";
 import NewNode from "./NewNode";
 import { useLocation, useParams } from "react-router-dom";
+import NoteDetails from "../component/NoteDetails";
 
 const Home = () => {
     const { isOpen, setIsOpen } = useContext(menuContext);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [screenWidth] = useState(window.innerWidth)
     
-    let page = useLocation()
-    page = page.search.split('=')[1]
+    let newNodePath = useLocation()
+    newNodePath = newNodePath.search.split('=')[1]
+    const noteId = useParams().id
+    console.log(noteId)
 
     useEffect(() => {
         if(screenWidth <= 768){
@@ -40,9 +43,11 @@ const Home = () => {
 
 
             {/* new note */}
-            {page == "add-newnote" && (
+            {newNodePath == "add-newnote" && (
                 <NewNode/>
             )}
+
+            {noteId&& (<NoteDetails noteId={noteId}/>)}
 
         </div>
     );

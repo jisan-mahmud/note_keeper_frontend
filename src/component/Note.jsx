@@ -1,13 +1,10 @@
 import { BsFillPinAngleFill } from "react-icons/bs";
-import NoteDetails from "./NoteDetails";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Note = () => {
+    const navigate = useNavigate()
 
-    const [isOpen, SetIsOpen] = useState(false)
-
-    console.log(isOpen)
     const title = 'onsectetur adipisicing elit.'
     const note = `
     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -20,8 +17,7 @@ const Note = () => {
     };
 
     return (
-       <>
-        <div onClick={ () => SetIsOpen(true)} className='bg-amber-100 rounded-lg p-4 !h-fit'>
+        <div onClick={ () => navigate(`/note/${1}`) } className='bg-amber-100 rounded-lg p-4 !h-fit'>
             <div className="flex items-center gap-3 mb-2">
                 <BsFillPinAngleFill className="text-3xl text-yellow-900" />
                 <h2 className="leading-none cursor-pointer font-bold text-xl text-gray-900">{title}</h2>
@@ -33,10 +29,6 @@ const Note = () => {
                 </p>
             </div>
         </div>
-        {isOpen && (
-            <NoteDetails title={title} note={note} setIsOpen={SetIsOpen}></NoteDetails>
-        )}
-       </>
     );
 };
 
