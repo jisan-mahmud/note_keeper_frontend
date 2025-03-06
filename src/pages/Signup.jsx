@@ -1,11 +1,20 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Buttton from "../component/Buttton";
 import EmailField from "../component/EmailField";
 import NameField from "../component/NameField";
 import PasswordField from "../component/PasswordField";
 import { MdError } from "react-icons/md";
+import { VscAccount } from "react-icons/vsc";
+import { auth } from '../utils/auth'
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+    const navigate = useNavigate()
+    const {token} = useContext(AuthContext)
+
+    if(token) navigate('/')
+    
 
     const firstName = useRef(null)
     const lastName = useRef(null)
@@ -14,10 +23,48 @@ const Signup = () => {
     const confirmPassword = useRef(null)
     
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const [isLoading, setIsLoding] = useState(false)
 
+  
     const handleForm = (e) => {
         e.preventDefault()
         handleFormInput()
+        if(!error){
+          setIsLoding(true);
+          ;(async () => {
+            try{
+              const data = {
+                first_name: firstName.current.value,
+                last_name: lastName.current.value,
+                email: email.current.value,
+                password: password.current.value,
+                confirm_password: confirmPassword.current.value
+              }
+      
+              const response = await auth.post('users/', data)
+              if(response.status == 201){
+                setIsLoding(false)
+                setSuccess('Sent activation link in your email.')
+              }
+            }catch (e){
+              const errorData = e.response?.data;
+  
+              if (errorData) {
+                let errorMessages = '';
+
+                for (const field in errorData) {
+                  console.log(field, errorData)
+                  errorMessages += `${field}: ${errorData[field].join(", ")} \n`;
+                }
+                setIsLoding(false)
+                setError(errorMessages.trim());
+                setSuccess('')
+              }
+            }
+          })()
+        }
+        
     }
 
     const handleFormInput = () => {
@@ -63,8 +110,15 @@ const Signup = () => {
                   <span>{error}</span>
                 </div>
               )}
+
+              {success && (
+                <div className="flex items-center gap-2 text-green-600 text-sm">
+                  <VscAccount/>
+                  <span>{success}</span>
+                </div>
+              )}
       
-              <Buttton buttonType="Signup" />
+              <Buttton buttonType="Signup" isLoading={isLoading}/>
             </form>
         </div>
       </div>
