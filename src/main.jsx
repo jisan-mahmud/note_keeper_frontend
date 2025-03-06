@@ -17,6 +17,7 @@ createRoot(document.getElementById('root')).render(
             <Route index element={<Home />} />
             <Route path='sign-up' element={<Signup />} />
             <Route path='login' element={<Login />} />
+            <Route path='login/activate/:uid/:token/' element={<Login />} />
             <Route path='note/:id' element={<Home />} />
           </Route>
         </Routes>
