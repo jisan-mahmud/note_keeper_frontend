@@ -15,7 +15,6 @@ const Login = () => {
 
    useEffect(() => {
     if(uid && token) {
-        setActivate(true)
         ;(async () => {
             try{
                 const data = {
@@ -26,28 +25,12 @@ const Login = () => {
                 const response = await auth.post('users/activation/', data)
                 if(response.status == 204){
                     setActivate(true)
-                    toast.success('Account active successfully!', {
-                        position: "top-center",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: false,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                    });
+                    toast.success('Account active successfully!')
+                    setActivate(true)
                 }
             }catch(e){
-                toast.error('Link are invalid!', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
+                toast.error('Link are invalid!')
+                setActivate(true)
             }
 
         })()
@@ -96,7 +79,6 @@ const Login = () => {
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick={false}
-                    rtl={false}
                     pauseOnFocusLoss
                     draggable
                     pauseOnHover

@@ -8,6 +8,7 @@ import { VscAccount } from "react-icons/vsc";
 import { auth } from '../utils/auth'
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const Signup = () => {
     const confirmPassword = useRef(null)
     
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
+    const [status, setStatus] = useState(false)
     const [isLoading, setIsLoding] = useState(false)
 
   
@@ -32,6 +33,7 @@ const Signup = () => {
         handleFormInput()
         if(!error){
           setIsLoding(true);
+          setStatus(true)
           ;(async () => {
             try{
               const data = {
@@ -45,7 +47,7 @@ const Signup = () => {
               const response = await auth.post('users/', data)
               if(response.status == 201){
                 setIsLoding(false)
-                setSuccess('Sent activation link in your email.')
+                toast.success('Activation link sent in email!')
               }
             }catch (e){
               const errorData = e.response?.data;
@@ -54,12 +56,10 @@ const Signup = () => {
                 let errorMessages = '';
 
                 for (const field in errorData) {
-                  console.log(field, errorData)
                   errorMessages += `${field}: ${errorData[field].join(", ")} \n`;
                 }
                 setIsLoding(false)
-                setError(errorMessages.trim());
-                setSuccess('')
+                toast.error(errorMessages.trim())
               }
             }
           })()
@@ -111,11 +111,18 @@ const Signup = () => {
                 </div>
               )}
 
-              {success && (
-                <div className="flex items-center gap-2 text-green-600 text-sm">
-                  <VscAccount/>
-                  <span>{success}</span>
-                </div>
+              {status && (
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
               )}
       
               <Buttton buttonType="Signup" isLoading={isLoading}/>
