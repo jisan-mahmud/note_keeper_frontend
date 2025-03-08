@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import Buttton from "../component/Buttton";
 import EmailField from "../component/EmailField";
 import NameField from "../component/NameField";
@@ -14,7 +14,11 @@ const Signup = () => {
     const navigate = useNavigate()
     const {token} = useContext(AuthContext)
 
-    if(token) navigate('/')
+    useEffect(() => {
+        if (token) {
+            navigate("/");
+        }
+    }, [token, navigate]);
     
 
     const firstName = useRef(null)

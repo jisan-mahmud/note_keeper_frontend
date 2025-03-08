@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
 import { menuContext } from '../context/MenuContext';
-
+import Profile from './Profile';
+import { AuthContext } from '../context/AuthContext'
 const Navbar = () => {
 
     let path = useLocation()
@@ -20,9 +21,8 @@ const Navbar = () => {
                 {path == '/' && (<TiThMenu onClick={handleMenu} className='cursor-pointer' />)}
                 <h1><Link to='/'>Note Memo</Link></h1>
             </div>
-            <div className='flex gap-4 text-lg'>
-                <NavLink to='/sign-up' className={'hover:text-blue-900'}>Singup</NavLink>
-                <NavLink to='/login' className={'hover:text-blue-900'}>Login</NavLink>
+            <div className='flex gap-4 text-lg items-center'>
+            <Profile/>
             </div>
         </div>
     );
