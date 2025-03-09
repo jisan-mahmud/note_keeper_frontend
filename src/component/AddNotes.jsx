@@ -5,7 +5,7 @@ const AddNotes = () => {
 
     const navigate = useNavigate()
     const handleAddNote = () => {
-        navigate('/?page=add-newnote')
+        navigate('?page=add-newnote')
     }
 
     return ( 

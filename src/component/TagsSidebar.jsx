@@ -6,7 +6,7 @@ import AddNotes from './AddNotes';
 
 const TagsSidebar = () => {
     return (
-        <div className="flex flex-col justify-between min-h-[100dvh] overflow-y-auto p-4">
+        <div className="flex flex-col justify-between min-h-screen p-10">
             <div>
                 <SearchSection />
                 <Filter />

@@ -1,20 +1,42 @@
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useContext, useState, useRef, useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import userSvg from "../assets/user.svg";
 
 export default function Profile() {
-    const { token, setToken } = useContext(AuthContext)
-    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const { token, setToken } = useContext(AuthContext);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+    const location = useLocation(); // Detects route changes
 
-    const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
+    // Toggle dropdown
+    const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
+    // Handle logout
     const logoutHandle = () => {
-        setToken(null)
-    }
+        setToken("");
+        setDropdownOpen(false); // Close dropdown on logout
+    };
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setDropdownOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    // Close dropdown when navigating to another page
+    useEffect(() => {
+        setDropdownOpen(false);
+    }, [location]);
 
     return (
-        <div className="relative flex items-center">
+        <div className="relative flex items-center" ref={dropdownRef}>
             {/* Avatar Button */}
             <button
                 type="button"
@@ -23,7 +45,7 @@ export default function Profile() {
             >
                 <img
                     className="w-full h-full object-cover rounded-full"
-                    src="/docs/images/people/profile-picture-5.jpg"
+                    src={userSvg}
                     alt="User dropdown"
                 />
             </button>
@@ -32,10 +54,10 @@ export default function Profile() {
             <AnimatePresence>
                 {dropdownOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}  // Start position
-                        animate={{ opacity: 1, y: 0 }}   // End position
-                        exit={{ opacity: 0, y: -10 }}    // Exit animation
-                        transition={{ duration: 0.3 }}  // Animation duration
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
                         className="absolute top-12 right-0 z-10 mt-2 divide-y divide-gray-100 rounded-lg shadow-lg w-44 bg-[#FAD0C4] p-0 m-0 max-w-xs sm:w-48"
                     >
                         <div className="px-4 py-3 text-sm text-gray-900">
@@ -56,7 +78,11 @@ export default function Profile() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link onClick={logoutHandle} className="block px-4 py-2 hover:bg-red-500 text-red-700 hover:text-white rounded">
+                                    <Link
+                                        to="#"
+                                        onClick={logoutHandle}
+                                        className="block px-4 py-2 hover:bg-red-500 text-red-700 hover:text-white rounded"
+                                    >
                                         Logout
                                     </Link>
                                 </li>
@@ -79,5 +105,5 @@ export default function Profile() {
                 )}
             </AnimatePresence>
         </div>
-    )
+    );
 }
