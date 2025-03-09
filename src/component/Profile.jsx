@@ -1,6 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import userSvg from "../assets/user.svg";
 
@@ -8,15 +8,17 @@ export default function Profile() {
     const { token, setToken } = useContext(AuthContext);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-    const location = useLocation(); // Detects route changes
-
+    const location = useLocation(); 
+    const navigate = useNavigate()
     // Toggle dropdown
     const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
     // Handle logout
     const logoutHandle = () => {
         setToken("");
-        setDropdownOpen(false); // Close dropdown on logout
+        setDropdownOpen(false);
+        navigate('/')
+
     };
 
     // Close dropdown when clicking outside

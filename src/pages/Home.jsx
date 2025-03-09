@@ -61,7 +61,7 @@ const Home = () => {
             {newNodePath && newNodePath === "add-newnote" && <NewNode />}
 
             {/* Display note details if a note ID is present */}
-            {noteId && <NoteDetails noteId={noteId} />}
+            {noteId && <NoteDetails/>}
         </div>
     );
 };

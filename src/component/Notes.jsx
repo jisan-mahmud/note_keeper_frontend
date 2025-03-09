@@ -4,11 +4,12 @@ import Note from "../component/Note";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { notes } from "../utils/notes";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { AuthContext } from "../context/AuthContext";
 
 // Fetching the notes from the API
 const fetchNotes = async ({ pageParam = 1 }) => {
     try {
-        const response = await notes.get("", { params: { page: pageParam } });
+        const response = await notes.get("api/notes/", { params: { page: pageParam } });
         return response.data;
     } catch (error) {
         console.error("Error fetching notes:", error);
@@ -18,6 +19,11 @@ const fetchNotes = async ({ pageParam = 1 }) => {
 
 const Notes = () => {
     const { isOpen } = useContext(menuContext);
+    const {token} = useContext(AuthContext)
+
+    if(!token){
+        return <h1 className="flex h-full justify-center items-center">none</h1>
+    }
 
     const {
         data,

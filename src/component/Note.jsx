@@ -5,7 +5,7 @@ const Note = ({ id, title, note }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/note/${id}`);  // Use dynamic note ID
+        navigate(`/note/${id}`);  
     };
 
     return (
