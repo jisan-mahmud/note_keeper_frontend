@@ -5,11 +5,16 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { notes } from "../utils/notes";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AuthContext } from "../context/AuthContext";
+import { useSearchParams } from "react-router-dom";
 
 // Fetching the notes from the API
-const fetchNotes = async ({ pageParam = 1 }) => {
+const fetchNotes = async ({ pageParam = 1, queryKey }) => {
+    const [, tag] = queryKey
+    
     try {
-        const response = await notes.get("api/notes/", { params: { page: pageParam } });
+        const params = {page: pageParam}
+        if(tag) params['tags__name'] = tag
+        const response = await notes.get("api/notes/", {params});
         return response.data;
     } catch (error) {
         console.error("Error fetching notes:", error);
@@ -20,6 +25,8 @@ const fetchNotes = async ({ pageParam = 1 }) => {
 const Notes = () => {
     const { isOpen } = useContext(menuContext);
     const {token} = useContext(AuthContext)
+    const [searchParams] = useSearchParams()
+    const tag = searchParams.get('tag')
 
     if(!token){
         return <h1 className="flex h-full justify-center items-center">none</h1>
@@ -34,7 +41,7 @@ const Notes = () => {
         isFetchingNextPage,
         status
     } = useInfiniteQuery({
-        queryKey: ["notes"],
+        queryKey: ["notes", tag],
         queryFn: fetchNotes,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage?.next ?? null,
