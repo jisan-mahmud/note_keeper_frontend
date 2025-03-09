@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { menuContext } from "../context/MenuContext";
 import Note from "../component/Note";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -28,8 +28,8 @@ const Notes = () => {
     const [searchParams] = useSearchParams()
     const tag = searchParams.get('tag')
 
-    if(!token){
-        return <h1 className="flex h-full justify-center items-center">none</h1>
+    if (!token) {
+        return <h1 className="flex h-screen justify-center items-center">Empty...</h1>;
     }
 
     const {

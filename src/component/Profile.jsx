@@ -18,7 +18,7 @@ export default function Profile() {
         setToken("");
         setDropdownOpen(false);
         navigate('/')
-
+        window.location.reload();
     };
 
     // Close dropdown when clicking outside

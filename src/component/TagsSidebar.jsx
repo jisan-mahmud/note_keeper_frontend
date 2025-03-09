@@ -9,7 +9,6 @@ const TagsSidebar = () => {
         <div className="flex flex-col justify-between min-h-screen p-10">
             <div>
                 <SearchSection />
-                <Filter />
                 <Tags />
             </div>
             <div>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FaTags } from "react-icons/fa";
 import { IoMdPricetag } from "react-icons/io";
 import {useQuery} from '@tanstack/react-query'
 import {notes} from '../utils/notes'
-
+import {AuthContext} from '../context/AuthContext'
 const fetchTags = async () => {
     const response = await notes.get('api/tags/')
     return response.data
@@ -13,6 +13,18 @@ const fetchTags = async () => {
 
 const Tags = () => {
     const navigate = useNavigate()
+    const {token} = useContext(AuthContext)
+
+    if(!token) return (
+        <>
+            <div className='ml-1 my-2 flex items-center gap-2'>
+                <FaTags />
+                <b className='text-lg'>All Tags</b>
+            </div>
+            <h1>Empty...</h1>
+        </>
+    )
+
     const {isFetching, data, error} = useQuery({
         queryKey: ['tags'],
         queryFn: fetchTags
